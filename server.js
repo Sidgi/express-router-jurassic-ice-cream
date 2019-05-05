@@ -70,7 +70,19 @@ app.get('/flavors/:id',async(req,res)=>{
 
 // Create a route that displays a single flavor by name Ex: /flavors/name/lemon should display json of the lemon flavor
 
-
+app.get('/flavor/:name', async(req,res)=>{
+    try{
+        const flavorName = req.params.name;
+        const flavor = await Flavor.findAll({
+            where:{
+                name:flavorName
+            }
+        })
+        res.send(flavor)
+    }catch(e){
+        res.json(e.message)
+    }
+})
 app.listen(3000, () => {
     console.log(`running on port 3000!`)
 })
