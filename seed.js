@@ -44,6 +44,8 @@ const main = async () => {
     })
     
 }
-
-main()
-// process.exit()
+const run = async ()=>{
+    await main();
+    process.exit();
+}
+run();

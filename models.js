@@ -23,7 +23,7 @@ const Flavor = db.define('flavor', {
   on_sale: Sequelize.BOOLEAN,
 })
 
-db.sync()
+// db.sync()
 
 module.exports = {
   db,

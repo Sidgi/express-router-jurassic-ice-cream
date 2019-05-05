@@ -8,11 +8,25 @@ app.get('/', (req, res) => {
 
 // Create a route that displays all dinos
 
-
+app.get('/dinos',async(req,res)=>{
+    try{
+        const allDinos = await Dinosaur.findAll();
+        res.json(allDinos);
+      }catch(e){
+        res.status(500).json({msg:e.message})
+      }
+})
 
 // Create a route that displays all flavors
 
-
+app.get('/flavors', async(req,res)=>{
+    try{
+        const allFlavors = await Flavor.findAll();
+        res.json(allFlavors);
+    }catch(e){
+        res.status(500).json({msg:e.message})
+    }
+})
 
 // Create a route that displays a single dino by id Ex: /dinos/id/1 should display json of the dino with an id of 1
 
