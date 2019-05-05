@@ -58,9 +58,11 @@ app.get('/dino/:name',async(req,res)=>{
 
 // Create a route that displays a single flavor by id Ex: /flavors/id/1 should display json of the flavor with an id of 1
 
-get.app('/flavors/:id',(req,res)=>{
+app.get('/flavors/:id',async(req,res)=>{
     try{
         const flavorId = req.params.id;
+        const flavor = await Flavor.findByPk(flavorId);
+        res.send(flavor);
     }catch(e){
         res.status.json({message:e.message})
     }
